@@ -7,6 +7,8 @@ import com.devsuperior.dsvendas.entities.Sale;
 
 public class SaleDTO implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private Long id;
 
 	private Long visited;
@@ -28,7 +30,7 @@ public class SaleDTO implements Serializable {
 		this.deals = deals;
 		this.amount = amount;
 		this.date = date;
-		this.seller = seller;
+		this.setSeller(seller);
 	}
 
 	public SaleDTO(Sale entity) {
@@ -37,7 +39,7 @@ public class SaleDTO implements Serializable {
 		this.deals = entity.getDeals();
 		this.amount = entity.getAmount();
 		this.date = entity.getDate();
-		this.seller = new SellerDTO(entity.getSeller());
+		this.setSeller(new SellerDTO(entity.getSeller()));
 	}
 
 	public Long getId() {
@@ -78,6 +80,14 @@ public class SaleDTO implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public SellerDTO getSeller() {
+		return seller;
+	}
+
+	public void setSeller(SellerDTO seller) {
+		this.seller = seller;
 	}
 
 }
